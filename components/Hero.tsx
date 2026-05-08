@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { CONFIG, waURL } from "@/lib/config";
 
 const fadeUp = (delay = 0) => ({
@@ -143,13 +144,19 @@ export default function Hero() {
             className="hidden lg:flex justify-center items-end"
           >
             <div
-              className="w-full max-w-[380px]"
+              className="relative w-full max-w-[380px] aspect-square"
               style={{
                 filter: "drop-shadow(0 20px 48px rgba(29,58,240,.18))",
                 animation: "mascotFloat 4.5s ease-in-out infinite",
               }}
             >
-              <BennyMascot />
+              <Image
+                src="/images/logo.png"
+                alt="Benny Glass"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
           </motion.div>
 
@@ -167,47 +174,3 @@ function WhatsAppIcon() {
   );
 }
 
-function BennyMascot() {
-  return (
-    <svg viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg" fill="none">
-      <rect x="82" y="258" width="34" height="68" rx="7" fill="#1E293B" fillOpacity=".75"/>
-      <rect x="124" y="258" width="34" height="68" rx="7" fill="#1E293B" fillOpacity=".75"/>
-      <rect x="76"  y="316" width="46" height="14" rx="5" fill="#0F172A" fillOpacity=".85"/>
-      <rect x="118" y="316" width="46" height="14" rx="5" fill="#0F172A" fillOpacity=".85"/>
-      <rect x="76" y="170" width="88" height="100" rx="8" fill="#1D3AF0" fillOpacity=".7"/>
-      <rect x="76" y="200" width="88" height="14" fill="#D4FF00" fillOpacity=".75"/>
-      <rect x="76" y="232" width="88" height="14" fill="#D4FF00" fillOpacity=".75"/>
-      <rect x="88" y="174" width="18" height="22" rx="3" fill="#1229C0" fillOpacity=".55"/>
-      <rect x="10" y="90" width="220" height="248" rx="4" fill="#93C5FD" fillOpacity=".13" stroke="#60A5FA" strokeWidth="2.5"/>
-      <line x1="120" y1="90"  x2="120" y2="338" stroke="#93C5FD" strokeWidth="1.5" strokeOpacity=".45"/>
-      <line x1="10"  y1="214" x2="230" y2="214" stroke="#93C5FD" strokeWidth="1.5" strokeOpacity=".45"/>
-      <path d="M 20 102 L 62 102 L 44 158 L 20 158 Z" fill="white" fillOpacity=".07"/>
-      <circle cx="16" cy="96" r="4" fill="white" fillOpacity=".15"/>
-      <circle cx="224" cy="96" r="4" fill="white" fillOpacity=".15"/>
-      <path d="M 78 184 C 58 192 28 206 12 214" stroke="#C68642" strokeWidth="22" strokeLinecap="round"/>
-      <ellipse cx="9" cy="216" rx="13" ry="11" fill="#C68642"/>
-      <path d="M 162 184 C 182 192 212 206 228 214" stroke="#C68642" strokeWidth="22" strokeLinecap="round"/>
-      <ellipse cx="231" cy="216" rx="13" ry="11" fill="#C68642"/>
-      <rect x="106" y="132" width="28" height="44" rx="8" fill="#C68642"/>
-      <ellipse cx="120" cy="114" rx="52" ry="48" fill="#C68642"/>
-      <path d="M 66 110 Q 66 56 120 52 Q 174 56 174 110" fill="#1D3AF0"/>
-      <rect x="58" y="104" width="124" height="14" rx="7" fill="#1229C0"/>
-      <circle cx="120" cy="53" r="5" fill="#0D1F8A"/>
-      <path d="M 84 76 Q 84 62 112 58" stroke="rgba(255,255,255,.25)" strokeWidth="5" strokeLinecap="round"/>
-      <line x1="136" y1="57" x2="136" y2="72" stroke="rgba(255,255,255,.15)" strokeWidth="3" strokeLinecap="round"/>
-      <line x1="148" y1="59" x2="148" y2="76" stroke="rgba(255,255,255,.15)" strokeWidth="3" strokeLinecap="round"/>
-      <path d="M  96 106 L 110 101" stroke="#7C4A1A" strokeWidth="3.5" strokeLinecap="round"/>
-      <path d="M 130 101 L 144 106" stroke="#7C4A1A" strokeWidth="3.5" strokeLinecap="round"/>
-      <ellipse cx="104" cy="114" rx="9"  ry="9"  fill="white"/>
-      <ellipse cx="136" cy="114" rx="9"  ry="9"  fill="white"/>
-      <circle  cx="105" cy="115" r="5.5" fill="#1A1A1A"/>
-      <circle  cx="137" cy="115" r="5.5" fill="#1A1A1A"/>
-      <circle  cx="107" cy="112" r="2.5" fill="white"/>
-      <circle  cx="139" cy="112" r="2.5" fill="white"/>
-      <path d="M 116 120 Q 110 128 114 132 Q 120 135 126 132 Q 130 128 124 120" fill="#B07A45" fillOpacity=".38"/>
-      <path d="M 100 136 Q 120 152 140 136" stroke="#7C4A1A" strokeWidth="3.5" strokeLinecap="round"/>
-      <ellipse cx=" 90" cy="130" rx="10" ry="8" fill="#E08070" fillOpacity=".2"/>
-      <ellipse cx="150" cy="130" rx="10" ry="8" fill="#E08070" fillOpacity=".2"/>
-    </svg>
-  );
-}
