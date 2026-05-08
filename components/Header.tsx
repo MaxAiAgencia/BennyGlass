@@ -24,6 +24,17 @@ export default function Header() {
 
   const closeMenu = () => setMenuOpen(false);
 
+  const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    closeMenu();
+    const target = document.querySelector(href);
+    if (target) {
+      const offset = 72; // altura del header fijo
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <motion.header
@@ -67,6 +78,7 @@ export default function Header() {
               <li key={l.href}>
                 <a
                   href={l.href}
+                  onClick={(e) => scrollTo(e, l.href)}
                   className="relative text-[12px] font-bold tracking-[.09em] uppercase text-[var(--muted)] hover:text-[var(--text)] transition-colors duration-200 group/link"
                 >
                   {l.label}
@@ -112,7 +124,7 @@ export default function Header() {
               <a
                 key={l.href}
                 href={l.href}
-                onClick={closeMenu}
+                onClick={(e) => scrollTo(e, l.href)}
                 className="flex py-4 text-[14px] font-bold tracking-[.09em] uppercase text-[var(--muted)] border-b border-[var(--border)] hover:text-[var(--text)] transition-colors"
               >
                 {l.label}
