@@ -55,7 +55,7 @@ export default function Footer() {
             href={waURL()}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-[14px] font-semibold text-white/55 hover:text-[#25D366] transition-colors duration-200"
+            className="flex items-center gap-2 text-[14px] font-semibold text-[#25D366]/70 hover:text-[#25D366] transition-colors duration-200"
           >
             <WhatsAppIcon />
             WhatsApp

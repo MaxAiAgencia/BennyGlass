@@ -11,10 +11,10 @@ const fadeUp = (delay = 0) => ({
 });
 
 const stats = [
-  { value: CONFIG.projectsCount,    label: "Proyectos" },
-  { value: CONFIG.yearsExperience,  label: "Años de exp." },
-  { value: "24h",                   label: "Cotización" },
-  { value: "100%",                  label: "Garantizado" },
+  { value: CONFIG.projectsCount,   label: "Proyectos",    color: "var(--blue)" },
+  { value: CONFIG.yearsExperience, label: "Años de exp.", color: "var(--coral)" },
+  { value: "24h",                  label: "Cotización",   color: "var(--teal)" },
+  { value: "100%",                 label: "Garantizado",  color: "var(--lime)" },
 ];
 
 export default function Hero() {
@@ -24,42 +24,51 @@ export default function Hero() {
       className="relative min-h-screen pt-[72px] flex items-center overflow-hidden"
       style={{ background: "var(--bg)" }}
     >
-      {/* Animated grid */}
+      {/* Subtle warm dot grid */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none opacity-40"
         style={{
-          backgroundImage:
-            "linear-gradient(rgba(29,58,240,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(29,58,240,.05) 1px,transparent 1px)",
-          backgroundSize: "64px 64px",
-          animation: "gridScroll 22s linear infinite",
+          backgroundImage: "radial-gradient(circle, rgba(42,91,240,.18) 1.5px, transparent 1.5px)",
+          backgroundSize: "36px 36px",
         }}
       />
 
-      {/* Glow blobs */}
-      <div className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle,rgba(29,58,240,.1) 0%,transparent 70%)", filter: "blur(100px)", animation: "blobPulse 7s ease-in-out infinite" }} />
-      <div className="absolute -bottom-32 -left-20 w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle,rgba(29,58,240,.06) 0%,transparent 70%)", filter: "blur(100px)", animation: "blobPulse 9s ease-in-out infinite 2.5s" }} />
+      {/* Blob coral */}
+      <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle,rgba(255,85,51,.13) 0%,transparent 68%)", filter: "blur(80px)", animation: "blobPulse 8s ease-in-out infinite" }} />
+      {/* Blob teal */}
+      <div className="absolute top-[40%] -right-10 w-[380px] h-[380px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle,rgba(11,191,171,.11) 0%,transparent 70%)", filter: "blur(70px)", animation: "blobPulse 10s ease-in-out infinite 1.5s" }} />
+      {/* Blob blue */}
+      <div className="absolute -bottom-40 -left-20 w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle,rgba(42,91,240,.1) 0%,transparent 70%)", filter: "blur(90px)", animation: "blobPulse 9s ease-in-out infinite 3s" }} />
+      {/* Blob amber small */}
+      <div className="absolute top-[15%] left-[8%] w-[220px] h-[220px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle,rgba(245,158,11,.1) 0%,transparent 70%)", filter: "blur(50px)", animation: "blobPulse 12s ease-in-out infinite 0.8s" }} />
 
-      {/* Floating window frames */}
+      {/* Floating window frames — ahora con colores */}
       {[
-        { cls: "w-[148px] h-[186px] top-[12%] right-[7%]", delay: "0s" },
-        { cls: "w-[84px]  h-[110px] top-[66%] right-[3%]", delay: "-4s" },
-        { cls: "w-[60px]  h-[80px]  top-[18%] left-[3%] opacity-50", delay: "-8s" },
+        { cls: "w-[148px] h-[186px] top-[12%] right-[7%]", delay: "0s",  border: "rgba(255,85,51,.2)",   bg: "rgba(255,85,51,.03)"  },
+        { cls: "w-[84px]  h-[110px] top-[66%] right-[3%]", delay: "-4s", border: "rgba(11,191,171,.2)",  bg: "rgba(11,191,171,.03)" },
+        { cls: "w-[60px]  h-[80px]  top-[18%] left-[3%] opacity-60", delay: "-8s", border: "rgba(245,158,11,.25)", bg: "rgba(245,158,11,.04)" },
       ].map((f, i) => (
         <div
           key={i}
-          className={`absolute border border-[rgba(29,58,240,.15)] bg-[rgba(29,58,240,.025)] rounded-sm pointer-events-none ${f.cls}`}
-          style={{ animation: `wfDrift 14s ease-in-out infinite ${f.delay}` }}
+          className={`absolute rounded-sm pointer-events-none ${f.cls}`}
+          style={{
+            border: `1px solid ${f.border}`,
+            background: f.bg,
+            animation: `wfDrift 14s ease-in-out infinite ${f.delay}`,
+          }}
         >
-          <div className="absolute top-1/2 left-0 right-0 h-px bg-[rgba(29,58,240,.1)]" />
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-[rgba(29,58,240,.1)]" />
+          <div className="absolute top-1/2 left-0 right-0 h-px" style={{ background: f.border }} />
+          <div className="absolute left-1/2 top-0 bottom-0 w-px" style={{ background: f.border }} />
         </div>
       ))}
 
       {/* CSS keyframes */}
       <style>{`
-        @keyframes gridScroll { to { transform: translate(64px,64px); } }
+        @keyframes gridScroll { to { transform: translate(36px,36px); } }
         @keyframes blobPulse  { 0%,100%{transform:scale(1);opacity:.8} 50%{transform:scale(1.14);opacity:1} }
         @keyframes wfDrift    { 0%,100%{transform:translateY(0) rotate(0)} 33%{transform:translateY(-18px) rotate(.4deg)} 66%{transform:translateY(11px) rotate(-.3deg)} }
         @keyframes mascotFloat{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-22px)} }
@@ -70,10 +79,11 @@ export default function Hero() {
 
           {/* Text */}
           <div>
-            {/* Badge */}
-            <motion.div {...fadeUp(0)} className="inline-flex items-center gap-2 bg-[var(--blue-pale)] border border-[rgba(29,58,240,.25)] rounded-full px-4 py-[7px] mb-7">
-              <span className="w-[7px] h-[7px] rounded-full bg-[var(--blue)]" style={{ animation: "blobPulse 2s ease-in-out infinite" }} />
-              <span className="text-[11px] font-bold tracking-[.13em] uppercase text-[var(--blue)]">
+            {/* Badge — coral cálido */}
+            <motion.div {...fadeUp(0)} className="inline-flex items-center gap-2 rounded-full px-4 py-[7px] mb-7"
+              style={{ background: "var(--coral-pale)", border: "1px solid rgba(255,85,51,.28)" }}>
+              <span className="w-[7px] h-[7px] rounded-full" style={{ background: "var(--coral)", animation: "blobPulse 2s ease-in-out infinite" }} />
+              <span className="text-[11px] font-bold tracking-[.13em] uppercase" style={{ color: "var(--coral)" }}>
                 Profesionales en cristales y aluminios
               </span>
             </motion.div>
@@ -94,14 +104,21 @@ export default function Hero() {
               Instalación profesional de cristales y aluminios en{" "}
               <strong className="text-[var(--text)] font-bold">{CONFIG.city}</strong>.
               Cancelería, fachadas, divisiones y más.{" "}
-              <strong className="text-[var(--text)] font-bold">Calidad garantizada.</strong>
+              <strong style={{ color: "var(--coral)", fontWeight: 700 }}>Calidad garantizada.</strong>
             </motion.p>
 
             {/* CTAs */}
             <motion.div {...fadeUp(0.3)} className="flex flex-wrap gap-3 mb-14">
               <a
                 href="#trabajos"
-                className="inline-flex items-center gap-2 px-8 py-[17px] text-[14px] font-bold tracking-[.07em] uppercase rounded-md border-2 border-[rgba(29,58,240,.3)] text-[var(--text)] hover:border-[var(--blue)] hover:text-[var(--blue)] hover:bg-[var(--blue-pale)] active:scale-95 transition-all duration-200"
+                className="inline-flex items-center gap-2 px-8 py-[17px] text-[14px] font-bold tracking-[.07em] uppercase rounded-xl transition-all duration-200 active:scale-95"
+                style={{
+                  border: "2px solid rgba(42,91,240,.25)",
+                  color: "var(--text)",
+                  background: "transparent",
+                }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--blue)"; (e.currentTarget as HTMLElement).style.color = "var(--blue)"; (e.currentTarget as HTMLElement).style.background = "var(--blue-pale)"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(42,91,240,.25)"; (e.currentTarget as HTMLElement).style.color = "var(--text)"; (e.currentTarget as HTMLElement).style.background = "transparent"; }}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 Ver trabajos
@@ -110,23 +127,28 @@ export default function Hero() {
                 href={waURL()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-[17px] text-[14px] font-bold tracking-[.07em] uppercase rounded-md bg-[var(--blue)] text-white hover:bg-[var(--blue-lt)] hover:shadow-[0_8px_40px_rgba(29,58,240,.35)] active:scale-95 transition-all duration-200"
+                className="inline-flex items-center gap-2 px-8 py-[17px] text-[14px] font-bold tracking-[.07em] uppercase rounded-xl text-white transition-all duration-200 active:scale-95"
+                style={{
+                  background: "linear-gradient(135deg, var(--coral) 0%, var(--coral-lt) 100%)",
+                  boxShadow: "0 8px 28px rgba(255,85,51,.35)",
+                }}
               >
                 <WhatsAppIcon />
                 Pedir cotización
               </a>
             </motion.div>
 
-            {/* Stats */}
+            {/* Stats — cada uno con su color */}
             <motion.div
               {...fadeUp(0.4)}
-              className="flex flex-wrap gap-8 pt-10 border-t border-[rgba(29,58,240,.12)]"
+              className="flex flex-wrap gap-8 pt-10"
+              style={{ borderTop: "1px solid rgba(42,91,240,.1)" }}
             >
               {stats.map((s) => (
                 <div key={s.label} className="flex flex-col gap-1">
                   <span
-                    className="text-[clamp(30px,4vw,48px)] leading-none text-[var(--blue)]"
-                    style={{ fontFamily: "'Bebas Neue','Arial Black',sans-serif" }}
+                    className="text-[clamp(30px,4vw,48px)] leading-none"
+                    style={{ fontFamily: "'Bebas Neue','Arial Black',sans-serif", color: s.color }}
                   >
                     {s.value}
                   </span>
@@ -146,7 +168,7 @@ export default function Hero() {
             <div
               className="relative w-full max-w-[380px] aspect-square"
               style={{
-                filter: "drop-shadow(0 20px 48px rgba(29,58,240,.18))",
+                filter: "drop-shadow(0 20px 56px rgba(255,85,51,.2)) drop-shadow(0 8px 24px rgba(42,91,240,.15))",
                 animation: "mascotFloat 4.5s ease-in-out infinite",
               }}
             >
@@ -173,4 +195,3 @@ function WhatsAppIcon() {
     </svg>
   );
 }
-

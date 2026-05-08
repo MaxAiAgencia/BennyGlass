@@ -43,8 +43,8 @@ export default function Header() {
         transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
         className={`fixed inset-x-0 top-0 z-50 h-[72px] flex items-center justify-between px-5 md:px-[72px] transition-all duration-300
           ${scrolled
-            ? "bg-[#F4F8FF]/95 backdrop-blur-2xl shadow-[0_2px_24px_rgba(29,58,240,.1)] border-b border-[rgba(29,58,240,.12)]"
-            : "bg-[#F4F8FF]/85 backdrop-blur-xl border-b border-[rgba(29,58,240,.08)]"
+            ? "bg-[#FFFEF9]/96 backdrop-blur-2xl shadow-[0_2px_24px_rgba(0,0,0,.07)] border-b border-[rgba(0,0,0,.06)]"
+            : "bg-[#FFFEF9]/85 backdrop-blur-xl border-b border-[rgba(0,0,0,.04)]"
           }`}
       >
         {/* Logo */}
@@ -91,7 +91,8 @@ export default function Header() {
             href={waURL()}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 bg-[var(--blue)] text-white text-[13px] font-bold tracking-[.07em] uppercase rounded-md hover:bg-[var(--blue-lt)] hover:shadow-[0_8px_30px_rgba(29,58,240,.35)] active:scale-95 transition-all duration-200"
+            className="px-6 py-3 text-white text-[13px] font-bold tracking-[.07em] uppercase rounded-xl active:scale-95 transition-all duration-200"
+            style={{ background: "linear-gradient(135deg, var(--coral) 0%, var(--coral-lt) 100%)", boxShadow: "0 4px 16px rgba(255,85,51,.28)" }}
           >
             Cotiza ahora
           </a>
@@ -118,7 +119,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.22 }}
-            className="fixed top-[72px] inset-x-0 z-40 bg-[#F4F8FF]/97 backdrop-blur-2xl border-b border-[var(--border)] px-5 pb-8"
+            className="fixed top-[72px] inset-x-0 z-40 bg-[#FFFEF9]/97 backdrop-blur-2xl border-b border-[rgba(0,0,0,.06)] px-5 pb-8"
           >
             {navLinks.map((l) => (
               <a
@@ -135,7 +136,8 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={closeMenu}
-              className="mt-5 flex justify-center w-full py-4 bg-[var(--blue)] text-white text-[14px] font-bold tracking-[.07em] uppercase rounded-md"
+              className="mt-5 flex justify-center w-full py-4 text-white text-[14px] font-bold tracking-[.07em] uppercase rounded-xl"
+              style={{ background: "linear-gradient(135deg, var(--coral) 0%, var(--coral-lt) 100%)" }}
             >
               Cotiza ahora
             </a>

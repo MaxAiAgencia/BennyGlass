@@ -5,6 +5,21 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { SERVICES } from "@/lib/config";
 
+type ColorScheme = {
+  color: string;
+  pale: string;
+  shadow: string;
+};
+
+const colorSchemes: Record<string, ColorScheme> = {
+  canceleria: { color: "var(--blue)",  pale: "var(--blue-pale)",  shadow: "rgba(42,91,240,.13)"   },
+  fachadas:   { color: "var(--teal)",  pale: "var(--teal-pale)",  shadow: "rgba(11,191,171,.13)"  },
+  divisiones: { color: "var(--amber)", pale: "var(--amber-pale)", shadow: "rgba(245,158,11,.13)"  },
+  espejos:    { color: "var(--coral)", pale: "var(--coral-pale)", shadow: "rgba(255,85,51,.13)"   },
+  barandales: { color: "var(--lime)",  pale: "var(--lime-pale)",  shadow: "rgba(122,197,32,.13)"  },
+  herrajes:   { color: "var(--blue)",  pale: "var(--blue-pale)",  shadow: "rgba(42,91,240,.3)"    },
+};
+
 const icons: Record<string, React.ReactNode> = {
   canceleria: (
     <svg viewBox="0 0 48 48" fill="none" className="w-full h-full" stroke="currentColor" strokeWidth="2.5">
@@ -68,7 +83,7 @@ const icons: Record<string, React.ReactNode> = {
 function ServiceCard({ service, index }: { service: typeof SERVICES[number]; index: number }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
-
+  const scheme = colorSchemes[service.id] ?? colorSchemes.canceleria;
   const isWide = service.id === "herrajes";
 
   return (
@@ -79,22 +94,48 @@ function ServiceCard({ service, index }: { service: typeof SERVICES[number]; ind
       transition={{ duration: 0.6, delay: index * 0.08, ease: [0.4, 0, 0.2, 1] }}
       className={`relative overflow-hidden rounded-[22px] p-6 md:p-9 transition-all duration-300 group
         ${service.featured
-          ? "bg-[var(--blue)] border border-[var(--blue)] shadow-[0_8px_40px_rgba(29,58,240,.3)] hover:bg-[var(--blue-lt)]"
-          : "bg-white border border-[rgba(29,58,240,.1)] shadow-[0_2px_20px_rgba(29,58,240,.06)] hover:border-[rgba(29,58,240,.3)] hover:shadow-[0_8px_40px_rgba(29,58,240,.13)] hover:-translate-y-1"
+          ? "text-white"
+          : "bg-white border border-[rgba(0,0,0,.07)] hover:-translate-y-1"
         }
         ${isWide ? "col-span-12" : ""}
       `}
+      style={service.featured ? {
+        background: `linear-gradient(135deg, ${scheme.color} 0%, ${scheme.color}cc 100%)`,
+        border: `1px solid ${scheme.color}`,
+        boxShadow: `0 8px 40px ${scheme.shadow}`,
+      } : {
+        boxShadow: `0 2px 20px rgba(0,0,0,.05)`,
+      }}
     >
-      {/* Subtle gradient on hover */}
+      {/* Hover overlay para tarjetas normales */}
       {!service.featured && (
-        <div className="absolute inset-0 bg-gradient-to-br from-[var(--blue-pale)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-[22px]" />
+        <div
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-[22px]"
+          style={{ background: `linear-gradient(135deg, ${scheme.pale} 0%, transparent 70%)` }}
+        />
+      )}
+
+      {/* Pill de color en tarjetas normales */}
+      {!service.featured && (
+        <div
+          className="absolute top-0 left-8 h-[3px] w-12 rounded-b-full transition-all duration-300 group-hover:w-20"
+          style={{ background: scheme.color }}
+        />
       )}
 
       <div className={`relative z-10 ${isWide ? "flex items-center justify-between gap-8" : ""}`}>
         <div className={isWide ? "flex-1" : ""}>
-          <div className={`w-12 h-12 mb-5 ${service.featured ? "text-[var(--yellow)]" : "text-[var(--blue)]"} ${isWide ? "" : ""}`}>
+          {/* Icon container con fondo de color */}
+          <div
+            className="w-14 h-14 mb-5 rounded-2xl flex items-center justify-center p-3 transition-transform duration-300 group-hover:scale-110"
+            style={service.featured
+              ? { background: "rgba(255,255,255,.15)", color: "white" }
+              : { background: scheme.pale, color: scheme.color }
+            }
+          >
             {icons[service.id]}
           </div>
+
           <h3
             className={`text-[clamp(20px,2.5vw,28px)] leading-[1.05] tracking-[.03em] mb-2
               ${service.featured ? "text-white" : "text-[var(--text)]"}`}
@@ -102,12 +143,16 @@ function ServiceCard({ service, index }: { service: typeof SERVICES[number]; ind
           >
             {service.name}
           </h3>
-          <p className={`text-[14px] leading-[1.55] ${service.featured ? "text-white/65" : "text-[var(--muted)]"}`}>
+          <p className={`text-[14px] leading-[1.55] ${service.featured ? "text-white/75" : "text-[var(--muted)]"}`}>
             {service.desc}
           </p>
         </div>
+
         {isWide && (
-          <div className="hidden md:block w-16 h-16 text-[var(--blue)] flex-shrink-0">
+          <div
+            className="hidden md:flex w-16 h-16 flex-shrink-0 rounded-2xl items-center justify-center p-3"
+            style={{ background: "rgba(255,255,255,.15)", color: "white" }}
+          >
             {icons[service.id]}
           </div>
         )}
@@ -129,7 +174,8 @@ export default function Services() {
             initial={{ opacity: 0, y: 16 }}
             animate={titleInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="inline-block text-[11px] font-bold tracking-[.2em] uppercase text-[var(--blue)] mb-3"
+            className="inline-flex items-center gap-2 rounded-full px-4 py-[6px] mb-4 text-[11px] font-bold tracking-[.2em] uppercase"
+            style={{ background: "var(--teal-pale)", color: "var(--teal)", border: "1px solid rgba(11,191,171,.25)" }}
           >
             Lo que hacemos
           </motion.span>
@@ -140,7 +186,7 @@ export default function Services() {
             className="text-[clamp(40px,5vw,70px)] leading-[.95] tracking-[.03em] text-[var(--text)]"
             style={{ fontFamily: "'Bebas Neue','Arial Black',sans-serif" }}
           >
-            Nuestros <span className="text-[var(--blue)]">servicios</span>
+            Nuestros <span style={{ color: "var(--blue)" }}>servicios</span>
           </motion.h2>
         </div>
 

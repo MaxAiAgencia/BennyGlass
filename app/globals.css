@@ -1,19 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
 @import "tailwindcss";
 
 :root {
-  --blue:      #1D3AF0;
-  --blue-lt:   #3D5AF5;
-  --blue-dk:   #1229C0;
-  --blue-pale: #EEF1FF;
-  --yellow:    #D4FF00;
-  --bg:        #F4F8FF;
-  --bg-2:      #FFFFFF;
-  --text:      #080D24;
-  --muted:     #6370A0;
-  --border:    rgba(29,58,240,.12);
-  --sh-card:   0 2px 20px rgba(29,58,240,.08);
-  --sh-blue:   0 8px 40px rgba(29,58,240,.2);
+  /* Azul principal */
+  --blue:       #2A5BF0;
+  --blue-lt:    #4A78FF;
+  --blue-dk:    #1A3BC0;
+  --blue-pale:  #EEF2FF;
+
+  /* Coral / naranja cálido */
+  --coral:      #FF5533;
+  --coral-lt:   #FF7755;
+  --coral-pale: #FFF0EC;
+
+  /* Teal / verde agua */
+  --teal:       #0BBFAB;
+  --teal-lt:    #1DD4BF;
+  --teal-pale:  #E6FAF8;
+
+  /* Ámbar / dorado */
+  --amber:      #F59E0B;
+  --amber-lt:   #FBBF24;
+  --amber-pale: #FFFBEB;
+
+  /* Lima / verde vivo */
+  --lime:       #7AC520;
+  --lime-lt:    #94D63A;
+  --lime-pale:  #F3FAE8;
+
+  /* Fondos y texto */
+  --bg:         #FFFEF9;
+  --bg-2:       #FFFFFF;
+  --text:       #1A1535;
+  --muted:      #64748B;
+  --border:     rgba(42,91,240,.1);
+  --sh-card:    0 2px 20px rgba(0,0,0,.07);
+  --sh-blue:    0 8px 40px rgba(42,91,240,.22);
 }
 
 html { scroll-behavior: smooth; }
