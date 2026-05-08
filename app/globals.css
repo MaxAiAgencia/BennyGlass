@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+:root {
+  --blue:      #1D3AF0;
+  --blue-lt:   #3D5AF5;
+  --blue-dk:   #1229C0;
+  --blue-pale: #EEF1FF;
+  --yellow:    #D4FF00;
+  --bg:        #F4F8FF;
+  --bg-2:      #FFFFFF;
+  --text:      #080D24;
+  --muted:     #6370A0;
+  --border:    rgba(29,58,240,.12);
+  --sh-card:   0 2px 20px rgba(29,58,240,.08);
+  --sh-blue:   0 8px 40px rgba(29,58,240,.2);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
