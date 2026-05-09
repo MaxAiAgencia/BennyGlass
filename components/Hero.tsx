@@ -22,6 +22,7 @@ export default function Hero() {
     <section
       id="inicio"
       className="relative min-h-screen pt-[72px] flex items-center"
+      style={{ background: "linear-gradient(145deg, #D9E4FF 0%, #EDE5FF 50%, #FFD9CE 100%)" }}
     >
       {/* Capa decorativa contenida — overflow-hidden solo aquí */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

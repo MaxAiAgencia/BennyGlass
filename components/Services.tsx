@@ -168,7 +168,7 @@ export default function Services() {
   const titleInView = useInView(titleRef, { once: true, margin: "-60px" });
 
   return (
-    <section id="servicios" className="py-24 md:py-32">
+    <section id="servicios" className="py-24 md:py-32" style={{ background: "#D6F5EF" }}>
       <div className="max-w-[1320px] mx-auto px-5 md:px-[72px]">
 
         <div ref={titleRef} className="mb-14">

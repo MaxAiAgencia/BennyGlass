@@ -43,8 +43,8 @@ export default function Header() {
         transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
         className={`fixed inset-x-0 top-0 z-50 h-[72px] flex items-center justify-between px-5 md:px-[72px] transition-all duration-300
           ${scrolled
-            ? "bg-[#FFFEF9]/96 backdrop-blur-2xl shadow-[0_2px_24px_rgba(0,0,0,.07)] border-b border-[rgba(0,0,0,.06)]"
-            : "bg-[#FFFEF9]/85 backdrop-blur-xl border-b border-[rgba(0,0,0,.04)]"
+            ? "bg-[#D9E4FF]/90 backdrop-blur-2xl shadow-[0_2px_24px_rgba(42,91,240,.12)] border-b border-[rgba(42,91,240,.15)]"
+            : "bg-[#D9E4FF]/70 backdrop-blur-xl border-b border-[rgba(42,91,240,.1)]"
           }`}
       >
         {/* Logo */}
@@ -119,7 +119,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.22 }}
-            className="fixed top-[72px] inset-x-0 z-40 bg-[#FFFEF9]/97 backdrop-blur-2xl border-b border-[rgba(0,0,0,.06)] px-5 pb-8"
+            className="fixed top-[72px] inset-x-0 z-40 bg-[#D9E4FF]/97 backdrop-blur-2xl border-b border-[rgba(42,91,240,.15)] px-5 pb-8"
           >
             {navLinks.map((l) => (
               <a

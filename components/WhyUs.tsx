@@ -46,7 +46,7 @@ export default function WhyUs() {
   const inView = useInView(titleRef, { once: true, margin: "-80px" });
 
   return (
-    <section id="diferenciadores" className="py-24 md:py-32 relative">
+    <section id="diferenciadores" className="py-24 md:py-32 relative" style={{ background: "#FFD9D1" }}>
 
       <div className="relative z-10 max-w-[1320px] mx-auto px-5 md:px-[72px]">
         <div className="grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-12 lg:gap-24 items-center">

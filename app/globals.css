@@ -38,14 +38,11 @@
   --sh-blue:    0 8px 40px rgba(42,91,240,.22);
 }
 
-html {
-  scroll-behavior: smooth;
-  background: var(--bg); /* fallback mientras carga el canvas */
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-  background: transparent;
+  background: var(--bg);
   color: var(--text);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;

@@ -31,7 +31,7 @@ export default function Portfolio() {
   const visible = PROJECTS.filter(p => active === "all" || p.category === active);
 
   return (
-    <section id="trabajos" className="py-24 md:py-32">
+    <section id="trabajos" className="py-24 md:py-32" style={{ background: "#FDE8C0" }}>
       <div className="max-w-[1320px] mx-auto px-5 md:px-[72px]">
 
         {/* Header */}
