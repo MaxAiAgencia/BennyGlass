@@ -9,15 +9,17 @@ type ColorScheme = {
   color: string;
   pale: string;
   shadow: string;
+  hex: string;
+  hexLt: string;
 };
 
 const colorSchemes: Record<string, ColorScheme> = {
-  canceleria: { color: "var(--blue)",  pale: "var(--blue-pale)",  shadow: "rgba(42,91,240,.13)"   },
-  fachadas:   { color: "var(--teal)",  pale: "var(--teal-pale)",  shadow: "rgba(11,191,171,.13)"  },
-  divisiones: { color: "var(--amber)", pale: "var(--amber-pale)", shadow: "rgba(245,158,11,.13)"  },
-  espejos:    { color: "var(--coral)", pale: "var(--coral-pale)", shadow: "rgba(255,85,51,.13)"   },
-  barandales: { color: "var(--lime)",  pale: "var(--lime-pale)",  shadow: "rgba(122,197,32,.13)"  },
-  herrajes:   { color: "var(--blue)",  pale: "var(--blue-pale)",  shadow: "rgba(42,91,240,.3)"    },
+  canceleria: { color: "var(--blue)",  pale: "var(--blue-pale)",  shadow: "rgba(42,91,240,.13)",  hex: "#2A5BF0", hexLt: "#4A78FF" },
+  fachadas:   { color: "var(--teal)",  pale: "var(--teal-pale)",  shadow: "rgba(11,191,171,.13)", hex: "#0BBFAB", hexLt: "#1DD4BF" },
+  divisiones: { color: "var(--amber)", pale: "var(--amber-pale)", shadow: "rgba(245,158,11,.13)", hex: "#F59E0B", hexLt: "#FBBF24" },
+  espejos:    { color: "var(--coral)", pale: "var(--coral-pale)", shadow: "rgba(255,85,51,.13)",  hex: "#FF5533", hexLt: "#FF7755" },
+  barandales: { color: "var(--lime)",  pale: "var(--lime-pale)",  shadow: "rgba(122,197,32,.13)", hex: "#7AC520", hexLt: "#94D63A" },
+  herrajes:   { color: "var(--blue)",  pale: "var(--blue-pale)",  shadow: "rgba(42,91,240,.3)",   hex: "#2A5BF0", hexLt: "#4A78FF" },
 };
 
 const icons: Record<string, React.ReactNode> = {
@@ -100,8 +102,8 @@ function ServiceCard({ service, index }: { service: typeof SERVICES[number]; ind
         ${isWide ? "col-span-12" : ""}
       `}
       style={service.featured ? {
-        background: `linear-gradient(135deg, ${scheme.color} 0%, ${scheme.color}cc 100%)`,
-        border: `1px solid ${scheme.color}`,
+        background: `linear-gradient(135deg, ${scheme.hex} 0%, ${scheme.hexLt} 100%)`,
+        border: `1px solid ${scheme.hex}`,
         boxShadow: `0 8px 40px ${scheme.shadow}`,
       } : {
         boxShadow: `0 2px 20px rgba(0,0,0,.05)`,
@@ -166,7 +168,7 @@ export default function Services() {
   const titleInView = useInView(titleRef, { once: true, margin: "-60px" });
 
   return (
-    <section id="servicios" className="py-24 md:py-32 bg-white">
+    <section id="servicios" className="py-24 md:py-32">
       <div className="max-w-[1320px] mx-auto px-5 md:px-[72px]">
 
         <div ref={titleRef} className="mb-14">

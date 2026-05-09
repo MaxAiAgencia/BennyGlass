@@ -46,12 +46,7 @@ export default function WhyUs() {
   const inView = useInView(titleRef, { once: true, margin: "-80px" });
 
   return (
-    <section id="diferenciadores" className="py-24 md:py-32 relative overflow-hidden" style={{ background: "var(--bg)" }}>
-      {/* Blobs de fondo */}
-      <div className="absolute inset-0 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse at 80% 50%, var(--blue-pale) 0%, transparent 55%)" }} />
-      <div className="absolute inset-0 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse at 10% 80%, var(--coral-pale) 0%, transparent 45%)" }} />
+    <section id="diferenciadores" className="py-24 md:py-32 relative">
 
       <div className="relative z-10 max-w-[1320px] mx-auto px-5 md:px-[72px]">
         <div className="grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-12 lg:gap-24 items-center">

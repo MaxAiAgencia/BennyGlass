@@ -21,12 +21,14 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen pt-[72px] flex items-center overflow-hidden"
-      style={{ background: "var(--bg)" }}
+      className="relative min-h-screen pt-[72px] flex items-center"
     >
+      {/* Capa decorativa contenida — overflow-hidden solo aquí */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+
       {/* Subtle warm dot grid */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-40"
+        className="absolute inset-0 opacity-40"
         style={{
           backgroundImage: "radial-gradient(circle, rgba(42,91,240,.18) 1.5px, transparent 1.5px)",
           backgroundSize: "36px 36px",
@@ -65,6 +67,8 @@ export default function Hero() {
           <div className="absolute left-1/2 top-0 bottom-0 w-px" style={{ background: f.border }} />
         </div>
       ))}
+
+      </div>{/* fin capa decorativa */}
 
       {/* CSS keyframes */}
       <style>{`
@@ -163,10 +167,10 @@ export default function Hero() {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] }}
-            className="hidden lg:flex justify-center items-end"
+            className="hidden lg:flex justify-center items-center"
           >
             <div
-              className="relative w-full max-w-[380px] aspect-square"
+              className="relative w-full max-w-[340px] aspect-square"
               style={{
                 filter: "drop-shadow(0 20px 56px rgba(255,85,51,.2)) drop-shadow(0 8px 24px rgba(42,91,240,.15))",
                 animation: "mascotFloat 4.5s ease-in-out infinite",
