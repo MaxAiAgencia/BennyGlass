@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import BackgroundCanvas from "@/components/BackgroundCanvas";
 
 export const metadata: Metadata = {
   title: "Benny Glass — Claridad en cada detalle",
@@ -15,10 +14,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body className="min-h-full antialiased overflow-x-hidden">
-        <BackgroundCanvas />
-        {children}
-      </body>
+      <body className="min-h-full antialiased overflow-x-hidden">{children}</body>
     </html>
   );
 }
