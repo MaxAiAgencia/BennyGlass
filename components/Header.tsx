@@ -43,8 +43,8 @@ export default function Header() {
         transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
         className={`fixed inset-x-0 top-0 z-50 h-[72px] flex items-center justify-between px-5 md:px-[72px] transition-all duration-300
           ${scrolled
-            ? "bg-[#D9E4FF]/90 backdrop-blur-2xl shadow-[0_2px_24px_rgba(42,91,240,.12)] border-b border-[rgba(42,91,240,.15)]"
-            : "bg-[#D9E4FF]/70 backdrop-blur-xl border-b border-[rgba(42,91,240,.1)]"
+            ? "bg-[#05081A]/80 backdrop-blur-2xl shadow-[0_2px_24px_rgba(0,0,0,.3)] border-b border-white/10"
+            : "bg-transparent border-b border-white/5"
           }`}
       >
         {/* Logo */}
@@ -60,12 +60,12 @@ export default function Header() {
           </div>
           <div className="flex flex-col leading-none">
             <span
-              className="font-display text-[22px] tracking-[.1em] text-[var(--text)] group-hover:text-[var(--blue)] transition-colors duration-200"
+              className="font-display text-[22px] tracking-[.1em] text-white group-hover:text-[#D4FF00] transition-colors duration-200"
               style={{ fontFamily: "'Bebas Neue', 'Arial Black', sans-serif" }}
             >
               BENNY GLASS
             </span>
-            <span className="text-[9px] font-bold tracking-[.15em] uppercase text-[var(--blue)]">
+            <span className="text-[9px] font-bold tracking-[.15em] uppercase text-[#D4FF00]">
               Claridad en cada detalle
             </span>
           </div>
@@ -79,7 +79,7 @@ export default function Header() {
                 <a
                   href={l.href}
                   onClick={(e) => scrollTo(e, l.href)}
-                  className="relative text-[12px] font-bold tracking-[.09em] uppercase text-[var(--muted)] hover:text-[var(--text)] transition-colors duration-200 group/link"
+                  className="relative text-[12px] font-bold tracking-[.09em] uppercase text-white/70 hover:text-white transition-colors duration-200 group/link"
                 >
                   {l.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[var(--blue)] group-hover/link:w-full transition-all duration-300" />
@@ -105,9 +105,9 @@ export default function Header() {
           aria-label="Menú"
           aria-expanded={menuOpen}
         >
-          <span className={`block w-6 h-[2px] bg-[var(--text)] rounded transition-transform duration-300 origin-center ${menuOpen ? "translate-y-[7px] rotate-45" : ""}`} />
-          <span className={`block w-6 h-[2px] bg-[var(--text)] rounded transition-opacity duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-[2px] bg-[var(--text)] rounded transition-transform duration-300 origin-center ${menuOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
+          <span className={`block w-6 h-[2px] bg-white rounded transition-transform duration-300 origin-center ${menuOpen ? "translate-y-[7px] rotate-45" : ""}`} />
+          <span className={`block w-6 h-[2px] bg-white rounded transition-opacity duration-300 ${menuOpen ? "opacity-0" : ""}`} />
+          <span className={`block w-6 h-[2px] bg-white rounded transition-transform duration-300 origin-center ${menuOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
         </button>
       </motion.header>
 
@@ -119,14 +119,14 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.22 }}
-            className="fixed top-[72px] inset-x-0 z-40 bg-[#D9E4FF]/97 backdrop-blur-2xl border-b border-[rgba(42,91,240,.15)] px-5 pb-8"
+            className="fixed top-[72px] inset-x-0 z-40 bg-[#05081A]/95 backdrop-blur-2xl border-b border-white/10 px-5 pb-8"
           >
             {navLinks.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={(e) => scrollTo(e, l.href)}
-                className="flex py-4 text-[14px] font-bold tracking-[.09em] uppercase text-[var(--muted)] border-b border-[var(--border)] hover:text-[var(--text)] transition-colors"
+                className="flex py-4 text-[14px] font-bold tracking-[.09em] uppercase text-white/60 border-b border-white/10 hover:text-white transition-colors"
               >
                 {l.label}
               </a>
